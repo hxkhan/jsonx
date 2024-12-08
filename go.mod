@@ -1,3 +1,3 @@
-module github.com/hk-32/jsonx
+module github.com/hxkhan/jsonx
 
 go 1.23.1

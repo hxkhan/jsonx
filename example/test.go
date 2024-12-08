@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hk-32/jsonx"
+	"github.com/hxkhan/jsonx"
 )
 
 func main() {

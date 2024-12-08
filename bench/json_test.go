@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hk-32/jsonx"
+	"github.com/hxkhan/jsonx"
 )
 
 const fileN = "./input.json"
