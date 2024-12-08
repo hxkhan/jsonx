@@ -54,7 +54,7 @@ func (state *state) compose() (any, error) {
 			goto COUNT_STR_LEN
 		}
 		state.pos++ // trailing quotation
-		return unsafe.String(&state.src[start], state.pos-start), nil
+		return string(state.src[start:state.pos]), nil
 
 	case iLeftBracket:
 		var array Array
@@ -101,6 +101,12 @@ func (state *state) compose() (any, error) {
 			}
 			state.pos++ // trailing quotation
 			key := unsafe.String(&state.src[start], state.pos-start)
+
+			/*
+				The map does not keep a reference to the original string, but rather stores its own copy of the string's data.
+				This means the string is safe to use as a map key even if the original string was derived from an unsafe.String conversion,
+				provided the memory backing the string remains valid until after the string has been copied into the map.
+			*/
 
 			// Swallow a colon
 			if state.swallow() == iColon {
@@ -192,7 +198,8 @@ func (state *state) compose() (any, error) {
 		if state.returnFloats {
 			return stof(str)
 		}
-		return Number{hasDecimals, str}, nil
+		// make string unique
+		return Number{hasDecimals, string(([]byte)(str))}, nil
 	}
 	return char, ErrDefault
 }
