@@ -1,4 +1,4 @@
-`jsonx` is a parser for arbitrary json in Golang, the `x` stands for arbitrary. The big goal of this package is to be more performant than the standard library, for the same task. Currently `jsonx` is more than twice as fast as `json.Unmarshal`. I don't consider it ready for production!
+`jsonx` is a parser for arbitrary json in Golang, the `x` stands for arbitrary. The big goal of this package is to be more performant than the standard library, for the same task. Currently `jsonx` is more than twice as fast as `json.Unmarshal`. NOTE: Still work in progress I believe.
 
 Usage
 ```go
